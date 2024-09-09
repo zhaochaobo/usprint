@@ -7,5 +7,7 @@ module.exports = function (defaults) {
     // Add options here
   });
 
+  app.import('node_modules/bootstrap/dist/css/bootstrap.css');
+  app.import('node_modules/bootstrap/dist/js/bootstrap.js');
   return app.toTree();
 };
