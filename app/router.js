@@ -8,6 +8,10 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('versions', function () {
-    this.route('sprints', { path: '/:version/sprints' });
+    this.route('version', { path: '/:version' }, function () {
+      this.route('sprints', function () {
+        this.route('sprint', { path: '/:sprint' });
+      });
+    });
   });
 });

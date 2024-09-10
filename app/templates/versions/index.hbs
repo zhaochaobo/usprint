@@ -1,4 +1,65 @@
 {{page-title "Index"}}
 {{outlet}}
 
-<h1> versions</h1>
+<article>
+  <h3> 版本列表</h3>
+  <section class="container px-4 py-5">
+    <h5 class="border-bottom pb-2">开发版本</h5>
+    <p>版本处于开发过程中，特性可能不完整且不稳定</p>
+
+    {{#each @model as |item| }}
+      {{#if  item.isDevelopment }}
+        <div class="opacity-100">
+          <LinkTo
+            class="p-3 mb-3 w-25 rounded-3 text-bg-primary d-block text-center text-decoration-none"
+            @route="versions.version.sprints"
+            @model={{item}}>
+            {{item.code}}
+          </LinkTo>
+        </div>
+      {{/if}}
+
+    {{/each}}
+
+  </section>
+  <section class="container px-4 py-5">
+    <h5 class="border-bottom pb-2">维护版本</h5>
+    <p>版本特性开发完成且经过了充分测试，准备或已发布到线上使用</p>
+    <div class="row row-cols-4">
+      {{#each @model as |item| }}
+        {{#if  item.isSpecial }}
+          <div class="opacity-100">
+            <LinkTo
+              class="p-3 mb-3 rounded-3 text-bg-success d-block text-center text-decoration-none"
+              @route="versions.version.sprints"
+              @model={{item}}>
+              {{item.code}}
+            </LinkTo>
+          </div>
+        {{/if}}
+
+      {{/each}}
+    </div>
+  </section>
+  <section class="container px-4 py-5">
+    <h5 class="border-bottom pb-2">归档版本</h5>
+    <p>已下线或准备弃用的版本</p>
+    <div class="row row-cols-4">
+      {{#each @model as |item| }}
+        {{#if  item.isArchived }}
+          <div class="opacity-75">
+            <LinkTo
+              class="p-3 mb-3 rounded-3 text-bg-info d-block text-center text-decoration-none"
+              @route="versions.version.sprints"
+              @model={{item}}>
+              {{item.code}}
+            </LinkTo>
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
+
+  </section>
+
+</article>
+

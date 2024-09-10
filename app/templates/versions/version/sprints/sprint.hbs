@@ -1,0 +1,53 @@
+{{page-title "Sprint"}}
+{{outlet}}
+
+<h3>V1R3C00B09</h3>
+
+<article>
+  <section class="container row-cols-1 py-2">
+    <button class="btn btn-primary" type="button">出包</button>
+    {{!--  <button class="btn btn-primary">下载</button>
+      <button class="btn btn-primary">转测</button>--}}
+  </section>
+
+  <section class="container py-5">
+    <h4 class="border-bottom pb-2">出包记录</h4>
+
+    {{#each @model as | item | }}
+      <div class="card my-5">
+        <div class="card-body">
+          <div class="card-header">
+            <h5>流水线ID： 100019 出包时间： 2024-09-10 10:10:00</h5>
+          </div>
+
+          <div class="my-2">
+            <div class="card-text">资源列表</div>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#">pkg-1.3.0.tar.gz</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">pkg-debuginfo-1.3.0.tar.gz</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">pkg-devel-1.3.0.tar.gz</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            {{#if item.disable}}
+              <a href="#" class="btn btn-light">废弃</a>
+            {{else}}
+              <a href="#" class="btn btn-primary">转测</a>
+            {{/if}}
+            <a href="#" class="btn btn-primary">部署</a>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+
+  </section>
+
+
+</article>
